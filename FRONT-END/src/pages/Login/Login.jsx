@@ -27,7 +27,7 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            navigate('/Profile')
+            navigate('/ProductsList')
         }
     }, [user, navigate])
 

@@ -12,23 +12,20 @@ const Profile = () => {
     // auth va etre utilisé en cas ou il y a un meme navbar qui contient
     // un button login dans la page login et logout dans la page profile  
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    const handleLogout = () => {
-        dispatch(logout())
-        navigate('/')
-    }
+    // const handleLogout = () => {
+    //     dispatch(logout())
+    //     navigate('/')
+    // }
 
     return (
-        <div>
-            <div className="container d-flex justify-content-end align-items-start mt-4">
-                <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
-            </div>
+        <div style={{marginTop:50}}>
             <div className="container">
                 <div className="main-body">
-                    {/* Breadcrumb */}
+                    {/* Breadcrumb
                     <nav aria-label="breadcrumb" className="main-breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
@@ -41,7 +38,7 @@ const Profile = () => {
                                 User Profile
                             </li>
                         </ol>
-                    </nav>
+                    </nav> */}
                     {/* /Breadcrumb */}
                     <div className="row gutters-sm">
                         <div className="col-md-4 mb-3">

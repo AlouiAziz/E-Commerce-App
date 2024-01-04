@@ -1,12 +1,157 @@
+// Ce code est à optimiser pour mettre chaque modal dans fichier.jsx
+
 import React from 'react'
 import '../Products/Products.css'
 import useProducts from './useProducts'
+import { Modal } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
+import { useState } from 'react'
+import myPhoto from '../../Assests/images/photo carte étudiant.jpg'
+
+
+
 const Products = () => {
 
-    const { getAllProducts, isLoading, products, error, productSelected, handleShow, show, handleClose, setNewProduct, newProduct } = useProducts()
+    const { getAllProducts, getOneProduct, deleteProduct, isLoading, productSelected, products, error, handleClose, handleShow, show, newProduct, setNewProduct, addProduct, updateProduct } = useProducts()
+
+    // Modal Add Product :
+
+    const [showAdd, setShowAdd] = useState(false);
+    const handleCloseAdd = () => showAdd && setShowAdd(false)
+    const handleShowAdd = () => !showAdd && setShowAdd(true);
+
+    // Modal Update Product :
+
+    const [showUp, setShowUp] = useState(false);
+    const handleCloseUp = () => showUp && setShowUp(false)
+    const handleShowUp = () => !showUp && setShowUp(true);
+
+    const [productUpdated, setProductUpdated] = useState({ nom: "", description: "", categorie: "658c66922b3a6f1c54058fbf", prix: "", stock: "", image: "" })
 
     return (
         <div>
+
+            {/* modal for get one Product */}
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>View Product</Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ margin: "5px" }}>
+                        <h6>{productSelected?.nom}</h6>
+                    </div>
+                    <br />
+                    <div style={{ margin: "5px" }}>
+                        <h6>{productSelected?.categorie}</h6>
+                    </div>
+                    <br />
+                    <div style={{ margin: "5px" }}>
+                        {/* Display image using an <img> tag */}
+                        <img src={productSelected?.image} alt="Product Image" style={{ maxWidth: '100%', maxHeight: '200px' }} />
+                    </div>
+                    <br />
+                    <div style={{ margin: "5px" }}>
+                        <h6>{productSelected?.description}</h6>
+                    </div>
+                    <br />
+                    <div style={{ margin: "5px" }}>
+                        <h6>{productSelected?.prix}</h6>
+                    </div>
+                    <br />
+                    <div style={{ margin: "5px" }}>
+                        <h6>{productSelected?.stock}</h6>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+            {/* modal for Adding Product */}
+            <Modal show={showAdd} onHide={handleCloseAdd}>
+                <Modal.Header closeButton>
+                    <Modal.Title>ADD NEW PRODUCT</Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Nom  :  </h6>
+                        <input style={{ width: "250px" }} type="text" onChange={(e) => setNewProduct({ ...newProduct, nom: e.target.value })} />
+                    </div>
+                    <br />
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Description :  </h6>
+                        <input type="text" style={{ width: "250px" }} onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })} />
+                    </div>
+                    {/* <div style={{ margin: "5px" }}>
+                        <h6> Categorie :  </h6>
+                        <input type="text" onChange={(e) => setNewProduct({ ...newProduct, categorie: e.target.value })} />
+                    </div> */}
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Prix :  </h6>
+                        <input type="text" style={{ width: "250px" }} onChange={(e) => setNewProduct({ ...newProduct, prix: e.target.value })} />
+                    </div>
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Stock :  </h6>
+                        <input type="number" style={{ width: "250px" }} min={0} onChange={(e) => setNewProduct({ ...newProduct, stock: e.target.value })} />
+                    </div>
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> image (Link) :  </h6>
+                        <input type="text" style={{ width: "250px" }} onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })} />
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseAdd}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={() => { addProduct(); handleCloseAdd() }}>
+                        Create
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/* modal for Update Product */}
+            <Modal show={showUp} onHide={handleCloseUp}>
+                <Modal.Header closeButton>
+                    <Modal.Title>UPDATE PRODUCT</Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Nom  :  </h6>
+                        <input style={{ width: "250px" }} type="text" name="nom" value={productUpdated.nom} onChange={(e) => setProductUpdated({ ...productUpdated, nom: e.target.value })} />
+                    </div>
+                    <br />
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Description :  </h6>
+                        <input type="text" style={{ width: "250px" }} name="description" value={productUpdated.description} onChange={(e) => setProductUpdated({ ...productUpdated, description: e.target.value })} />
+                    </div>
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Prix :  </h6>
+                        <input type="text" style={{ width: "250px" }} name="prix" value={productUpdated.prix} onChange={(e) => setProductUpdated({ ...productUpdated, prix: e.target.value })} />
+                    </div>
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> Stock :  </h6>
+                        <input type="number" style={{ width: "250px" }} name="stock" value={productUpdated.stock} min={0} onChange={(e) => setProductUpdated({ ...productUpdated, stock: e.target.value })} />
+                    </div>
+                    <div style={{ margin: "5px" }}>
+                        <h6 style={{ width: "150px" }}> image (Link) :  </h6>
+                        <input type="text" style={{ width: "250px" }} name="image" value={productUpdated.image} onChange={(e) => setProductUpdated({ ...productUpdated, image: e.target.value })} />
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseUp}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={() => { updateProduct(productUpdated._id, productUpdated); handleCloseUp() }}>
+                        Update
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+
             <div className="app-container">
                 <div className="sidebar">
                     <div className="sidebar-header">
@@ -58,7 +203,7 @@ const Products = () => {
                     <div className="account-info">
                         <div className="account-info-picture">
                             <img
-                                src=""
+                                src={myPhoto}
                                 alt="Account"
                             />
                         </div>
@@ -86,7 +231,7 @@ const Products = () => {
                 <div className="app-content">
                     <div className="app-content-header">
                         <h1 className="app-content-headerText">Products</h1>
-                        <button className="app-content-headerButton">Add Product</button>
+                        <button className="app-content-headerButton" onClick={handleShowAdd}>Add Product</button>
                     </div>
                     <div className="app-content-actions">
                         <input className="search-bar" placeholder="Search..." type="text" />
@@ -239,21 +384,21 @@ const Products = () => {
                                     <span>{product.nom}</span>
                                 </div>
                                 <div className="product-cell category">
-                                    <span className="cell-label">Category:</span>{product.categorie}
+                                    {/* <span className="cell-h6">Category:</span>*/}{product.categorie}
                                 </div>
                                 <div className="product-cell status-cell">
-                                    <span className="cell-label">Status:</span>
+                                    {/* <span className="cell-h6">Status:</span> */}
                                     <span className={product.stock > 0 ? "status active" : "status disabled"}>{product.stock > 0 ? "active" : "disabled"}</span>
                                 </div>
                                 <div className="product-cell stock">
-                                    <span className="cell-label">Stock:</span>{product.stock}
+                                    {/* <span className="cell-h6">Stock:</span> */}{product.stock}
                                 </div>
                                 <div className="product-cell price">
-                                    <span className="cell-label">Price:</span>{product.prix}
+                                    {/* <span className="cell-h6">Price:</span> */} {product.prix}
                                 </div>
                                 <div className="product-cell price">
-                                    <span className="cell-label">Details</span>
-                                    <button className="sort-button">
+                                    {/* <span className="cell-h6">Details</span> */}
+                                    <button className="sort-button" onClick={() => { handleShowUp(); setProductUpdated(product) }}>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={16}
@@ -262,11 +407,11 @@ const Products = () => {
                                         >
                                             <path
                                                 fill="currentColor"
-                                                d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                                                d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"
                                             />
                                         </svg>
                                     </button>
-                                    <button className="sort-button">
+                                    <button className="sort-button" onClick={() => { const id = product._id; getOneProduct(id); handleShow() }}>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={16}
@@ -275,11 +420,11 @@ const Products = () => {
                                         >
                                             <path
                                                 fill="currentColor"
-                                                d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                                                d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
                                             />
                                         </svg>
                                     </button>
-                                    <button className="sort-button">
+                                    <button className="sort-button" onClick={() => { const id = product._id; deleteProduct(id) }}>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={16}
@@ -288,7 +433,7 @@ const Products = () => {
                                         >
                                             <path
                                                 fill="currentColor"
-                                                d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                                                d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
                                             />
                                         </svg>
                                     </button>
