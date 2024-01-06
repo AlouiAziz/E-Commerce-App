@@ -13,6 +13,7 @@ import Products from './AdminView/Products/Products.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import ProductsList from './UserView/products/ProductsList.jsx';
 import TalkToUs from './pages/TalkToUs/TalkToUs.jsx'
+import ProductDetails from './pages/ProductDetails/ProductDetails.jsx';
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,6 +51,14 @@ function App() {
           element={
             <PrivateRoute>
               <ProductsList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ProductsList/:id"
+          element={
+            <PrivateRoute>
+              <ProductDetails />
             </PrivateRoute>
           }
         />

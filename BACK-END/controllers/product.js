@@ -20,19 +20,51 @@ exports.createProduct = async (req, res) => {
 
 // Afficher tous les produits
 
+// exports.getAllProducts = async (req, res) => {
+//     try {
+//         const products = await Product.find({ isActive: true })
+//         let data
+//         // Tester si la collection des produits est vide
+//         if (products && !products.length) { data = "No Data Found" }
+//         // Si non
+//         else { data = products }
+//         return res.status(200).json({ payload: data })
+//     } catch (error) {
+//         return res.status(500).json({ payload: "Error getting products" })
+//     }
+// }
+
 exports.getAllProducts = async (req, res) => {
     try {
-        const products = await Product.find({ isActive: true })
-        let data
-        // Tester si la collection des produits est vide
-        if (products && !products.length) { data = "No Data Found" }
-        // Si non
-        else { data = products }
-        return res.status(200).json({ payload: data })
+        let query = { isActive: true };
+
+        // Tester si la requête contient le paramètre "nom"
+        if (req.query.nom) {
+            const nomRegex = new RegExp(req.query.nom, 'i');
+            query.nom = nomRegex;
+        }
+
+        // Tester si la requête contient le paramètre "categorie"
+        if (req.query.categorie) {
+            const categorieRegex = new RegExp(req.query.categorie, 'i');
+            query.categorie = categorieRegex;
+        }
+
+        const products = await Product.find(query);
+
+        let data = (products && products.length) ? products : "No Data Found";
+
+        return res.status(200).json({
+            payload: data
+        });
+
     } catch (error) {
-        return res.status(500).json({ payload: "Error getting products" })
+        console.error(error);
+        res.status(500).json({
+            message: "Error getting products"
+        });
     }
-}
+};
 
 // Afficher un produit
 

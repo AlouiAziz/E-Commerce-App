@@ -3,20 +3,34 @@ import './Navbar.css'
 import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { logout } from '../redux/authSlice'
+import { Button, Form } from 'react-bootstrap'
+import { useState } from 'react';
+import axios from 'axios';
+
 
 const Navbar = () => {
-    const dispatch = useDispatch()
 
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const currentPathname = location.pathname;
+
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
 
     const handleLogout = () => {
-        dispatch(logout())
-        navigate('/')
-    }
+        dispatch(logout());
+        navigate('/');
+    };
 
-    const location = useLocation();
-
-    const currentPathname = location.pathname;
+    const handleSearch = async () => {
+        try {
+            const response = await axios.get(`/api/getAllProducts?nom=${searchTerm}`);
+            setSearchResults(response.data.payload);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
 
     return (
@@ -39,6 +53,31 @@ const Navbar = () => {
                         <li class="nav-item" role="presentation">
                             <a class={currentPathname === '/TalkToUs' ? "nav-link active" : "nav-link"} style={{ cursor: "pointer" }} data-toggle="pill" onClick={() => navigate('/TalkToUs')} role="tab" aria-controls="pills-contact" aria-selected="false">Talk To US</a>
                         </li>
+                        <div style={{ marginLeft: 120 }}>
+                            <Form className="d-flex">
+                                <Form.Control
+                                    type="search"
+                                    placeholder="Search"
+                                    className="me-2"
+                                    aria-label="Search"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                                <Button variant="outline-success" onClick={handleSearch}>
+                                    Search
+                                </Button>
+
+                                {/* Display search results */}
+                                {searchResults.length > 0 && (
+                                    <ul>
+                                        {searchResults.map((result) => (
+                                            <li key={result._id}>{result.nom}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                                {searchResults === 'No Data Found' && <p>No products found.</p>}
+                            </Form>
+                        </div>
                     </ul>
 
                     <ul class="list-group list-group-horizontal" >
@@ -69,8 +108,20 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
 export default Navbar
+
+
+
+
+
+
+
+
+
+
+
+

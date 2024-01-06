@@ -26,7 +26,7 @@ const Register = () => {
 
     useEffect(() => {
         if (user) {
-            navigate('/Profile')
+            navigate('/ProductsList')
         }
     }, [user, navigate])
 
