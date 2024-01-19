@@ -10,8 +10,8 @@ const userRoute = require('./routes/user.js')
 const categorieRoute = require('./routes/categorie.js')
 const commentaireRoute = require('./routes/commentaire.js')
 const commandeRoute = require('./routes/commande.js')
-const detailsCommandeRoute = require('./routes/detailsCommande.js')
-const panierRoute = require('./routes/panier.js')
+// const detailsCommandeRoute = require('./routes/detailsCommande.js')
+// const panierRoute = require('./routes/panier.js')
 const cookieParser = require('cookie-parser')
 
 
@@ -37,8 +37,8 @@ app.use('/user', userRoute)
 app.use('/categorie', categorieRoute)
 app.use('/commentaire', commentaireRoute)
 app.use('/commande', commandeRoute)
-app.use('/detailsCommande', detailsCommandeRoute)
-app.use('/panier', panierRoute)
+// app.use('/detailsCommande', detailsCommandeRoute)
+// app.use('/panier', panierRoute)
 
 // STARTED SERVER
 app.listen(PORT, () => {

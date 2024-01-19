@@ -1,3 +1,5 @@
+// Not Used
+
 const DetailsCommande = require('../models/detailsCommande.js');
 
 // Créer un nouveau détail de commande
@@ -80,3 +82,5 @@ exports.deleteDetailsCommande = async (req, res) => {
         return res.status(500).json({ payload: "Erreur lors de la suppression du détail de commande" });
     }
 };
+
+

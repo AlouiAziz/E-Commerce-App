@@ -2,13 +2,13 @@ const Commande = require('../models/commande.js');
 
 // Créer une nouvelle commande
 exports.createCommande = async (req, res) => {
-    const { products, etat } = req.body;
-    const { user_id } = req.params;
+    const { products, prixTotale, user_id, etat } = req.body;
     try {
-        const newCommande = new Commande({ user_id, products, etat });
+        const newCommande = new Commande({ user_id, products, prixTotale, etat });
         await newCommande.save();
         return res.status(201).json({ payload: "Commande créée avec succès" });
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ payload: "Erreur lors de la création de la commande" });
     }
 };
@@ -17,6 +17,22 @@ exports.createCommande = async (req, res) => {
 exports.getAllCommandes = async (req, res) => {
     try {
         const commandes = await Commande.find();
+        let data;
+        if (commandes && !commandes.length) {
+            data = "Aucune donnée trouvée";
+        } else {
+            data = commandes;
+        }
+        return res.status(200).json({ payload: data });
+    } catch (error) {
+        return res.status(500).json({ payload: "Erreur lors de la récupération des commandes" });
+    }
+};
+
+// Afficher toutes les commandes
+exports.getUserCommandes = async (req, res) => {
+    try {
+        const commandes = await Commande.find({user_id: req.params.id});
         let data;
         if (commandes && !commandes.length) {
             data = "Aucune donnée trouvée";
@@ -50,7 +66,7 @@ exports.updateCommande = async (req, res) => {
     try {
         const commande = await Commande.findByIdAndUpdate(
             { _id: req.params.id },
-            { user_id: req.body.user_id, products: req.body.products, etat: req.body.etat },
+            { user_id: req.body.user_id, products: req.body.products, etat: req.body.etat, prixTotale: req.body.prixTotale },
             { new: true }
         );
         let data;

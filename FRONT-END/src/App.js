@@ -5,44 +5,56 @@ import { useEffect } from 'react';
 import { currentUser } from './redux/authSlice.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from './components/Navbar.jsx';
-import Profile from './pages/Profile/Profile.jsx';
-import Login from './pages/Login/Login.jsx';
-import Register from './pages/Register/Register.jsx';
-import Products from './AdminView/Products/Products.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Profile from './UserViewPages/Profile/Profile.jsx';
+import Login from './UserViewPages/Login/Login.jsx';
+import Register from './UserViewPages/Register/Register.jsx';
+import Products from './AdminViewPages/Products/Products.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
-import ProductsList from './UserView/products/ProductsList.jsx';
-import TalkToUs from './pages/TalkToUs/TalkToUs.jsx'
-import ProductDetails from './pages/ProductDetails/ProductDetails.jsx';
+import ProductsList from './UserViewPages/products/ProductsList.jsx';
+import TalkToUs from './UserViewPages/TalkToUs/TalkToUs.jsx'
+import ProductDetails from './UserViewPages/ProductDetails/ProductDetails.jsx';
+import Cart from './UserViewPages/Cart/Cart.jsx';
+import Paiement from './UserViewPages/Paiement/Paiement.jsx';
+import Commandes from './UserViewPages/Commandes/Commandes.jsx';
+import Company from './UserViewPages/Company/Company.jsx'
+
+
 function App() {
+
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
 
-  // Define an array of paths where Navbar should not be displayed
-  const excludedPaths = ['/', '/Register'];
-
-  // Get the current path
-  const currentPath = window.location.pathname;
-
-  // Check if the current path is in the excluded paths array
-  const shouldDisplayNavbar = !excludedPaths.includes(currentPath);
-
   return (
+
     <div className="App">
-      {shouldDisplayNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/AdminView/Products" element={<Products />} />
+        <Route path="/AdminView/Categories" element={<Products />} />
+        <Route path="/AdminView/Commandes" element={<Products />} />
+        <Route path="/AdminView/DetailsCommandes" element={<Products />} />
+        <Route path="/AdminView/Paniers" element={<Products />} />
+        <Route path="/AdminView/Comments" element={<Products />} />
+        <Route path="/AdminView/Users" element={<Products />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Cart" element={<Cart />} />
         <Route
           path="/Profile"
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Company"
+          element={
+            <PrivateRoute>
+              <Company/>
             </PrivateRoute>
           }
         />
@@ -55,10 +67,26 @@ function App() {
           }
         />
         <Route
+          path="/Profile/:id"
+          element={
+            <PrivateRoute>
+              <Commandes />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/ProductsList/:id"
           element={
             <PrivateRoute>
               <ProductDetails />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Paiement"
+          element={
+            <PrivateRoute>
+              <Paiement />
             </PrivateRoute>
           }
         />

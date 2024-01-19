@@ -70,7 +70,18 @@ h2 {
     border-radius: 3px;
     text-transform: uppercase
 }
-
+.label-top-danger{
+    position: absolute;
+    background-color: red;
+    color: #fff;
+    top: 8px;
+    right: 8px;
+    padding: 5px 10px 5px 10px;
+    font-size: .7rem;
+    font-weight: 600;
+    border-radius: 3px;
+    text-transform: uppercase
+}
 .top-right {
     position: absolute;
     top: 24px;
@@ -231,4 +242,25 @@ footer {
     background: #212529;
     height: 80px;
     color: #fff
+}
+
+.classeHautDroite {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 30;
+    right: 30px;
+}
+
+.comment {
+    height: 90px;
+    width: 150px;
+    padding-left: 10px
+}
+
+.comment::placeholder {
+    color: #d3a709;
+    font-style: italic;
 }

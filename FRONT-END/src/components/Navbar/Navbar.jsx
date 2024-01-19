@@ -2,10 +2,9 @@ import React from 'react'
 import './Navbar.css'
 import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { logout } from '../redux/authSlice'
-import { Button, Form } from 'react-bootstrap'
-import { useState } from 'react';
-import axios from 'axios';
+import { logout } from '../../redux/authSlice'
+
+
 
 
 const Navbar = () => {
@@ -15,21 +14,10 @@ const Navbar = () => {
     const location = useLocation();
     const currentPathname = location.pathname;
 
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
 
     const handleLogout = () => {
         dispatch(logout());
         navigate('/');
-    };
-
-    const handleSearch = async () => {
-        try {
-            const response = await axios.get(`/api/getAllProducts?nom=${searchTerm}`);
-            setSearchResults(response.data.payload);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
     };
 
 
@@ -39,48 +27,20 @@ const Navbar = () => {
                 <div class="nav-wrapper d-flex align-items-center justify-content-between">
                     <ul class="nav nav-pills d-none d-md-flex" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link " data-toggle="pill" role="tab" aria-controls="pills-company" aria-selected="true">Company</a>
+                            <a class={currentPathname === '/Company' ? "nav-link active" : "nav-link"} style={{ cursor: "pointer" }} data-toggle="pill" onClick={() => navigate('/Company')} role="tab" aria-controls="pills-product" aria-selected="false">Company</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class={currentPathname === '/ProductsList' ? "nav-link active" : "nav-link"} style={{ cursor: "pointer" }} data-toggle="pill" onClick={() => navigate('/ProductsList')} role="tab" aria-controls="pills-product" aria-selected="false">Product</a>
+                            <a class={currentPathname === '/ProductsList' ? "nav-link active" : "nav-link"} style={{ cursor: "pointer" }} data-toggle="pill" onClick={() => navigate('/ProductsList')} role="tab" aria-controls="pills-product" aria-selected="false">Products</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class={currentPathname === '/Profile' ? "nav-link active" : "nav-link"} style={{ cursor: "pointer" }} data-toggle="pill" onClick={() => navigate('/Profile')} role="tab" aria-controls="pills-product" aria-selected="false">Profile</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-toggle="pill" role="tab" aria-controls="pills-news" aria-selected="false">News</a>
+                            <a class={currentPathname === '/TalkToUs' ? "nav-link active" : "nav-link"} style={{ cursor: "pointer" }} data-toggle="pill" onClick={() => navigate('/TalkToUs')} role="tab" aria-controls="pills-contact" aria-selected="false">Talk To Us</a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a class={currentPathname === '/TalkToUs' ? "nav-link active" : "nav-link"} style={{ cursor: "pointer" }} data-toggle="pill" onClick={() => navigate('/TalkToUs')} role="tab" aria-controls="pills-contact" aria-selected="false">Talk To US</a>
-                        </li>
-                        <div style={{ marginLeft: 120 }}>
-                            <Form className="d-flex">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                />
-                                <Button variant="outline-success" onClick={handleSearch}>
-                                    Search
-                                </Button>
-
-                                {/* Display search results */}
-                                {searchResults.length > 0 && (
-                                    <ul>
-                                        {searchResults.map((result) => (
-                                            <li key={result._id}>{result.nom}</li>
-                                        ))}
-                                    </ul>
-                                )}
-                                {searchResults === 'No Data Found' && <p>No products found.</p>}
-                            </Form>
-                        </div>
                     </ul>
-
                     <ul class="list-group list-group-horizontal" >
+
                         <li class="list-group-item">
                             <a href="">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

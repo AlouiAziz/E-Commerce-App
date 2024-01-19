@@ -9,7 +9,7 @@ let productSchema = new mongoose.Schema({
         type: String,
     },
     prix: {
-        type: String,
+        type: Number,
         require: true
     },
     categorie: {

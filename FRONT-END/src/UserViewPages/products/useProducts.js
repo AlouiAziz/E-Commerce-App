@@ -47,7 +47,15 @@ const useProducts = () => {
         getAllProducts()
     }, [])
 
-    return { getAllProducts, getOneProduct, isLoading, productSelected, products, error }
+    return {
+        getAllProducts,
+        getOneProduct,
+        setProducts,
+        isLoading,
+        productSelected,
+        products,
+        error,
+    };
 }
 
 export default useProducts

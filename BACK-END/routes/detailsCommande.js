@@ -9,3 +9,5 @@ router.put('/updatedetailCommande/:id', detailCommandeControllers.updateDetailsC
 router.delete('/deletedetailCommande/:id', detailCommandeControllers.deleteDetailsCommande)
 
 module.exports = router
+
+// Not Used

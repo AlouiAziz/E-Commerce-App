@@ -7,17 +7,31 @@ let commandeSchema = new mongoose.Schema({
         required: true,
     },
     products: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "products",
-        required: true,
+        product_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "products",
+            required: true,
+        },
+        quantite: {
+            type: Number,
+            required: true,
+        },
+        prixUnitaire: {
+            type: Number,
+            required: true,
+        },
     }],
+    prixTotale: {
+        type: Number,
+        required: true,
+    },
     date: {
         type: Date,
         default: Date.now,
     },
     etat: {
         type: String,
-        enum: ["enCours", "Done", "Canceled"],
+        enum: ["Done", "Canceled"],
         required: true,
     },
 });

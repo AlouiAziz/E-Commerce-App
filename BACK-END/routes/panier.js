@@ -9,3 +9,5 @@ router.put('/updatePanier/:id', PanierControllers.updatePanier)
 router.delete('/deletePanier/:id', PanierControllers.deletePanier)
 
 module.exports = router
+
+// Not Used

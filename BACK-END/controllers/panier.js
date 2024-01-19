@@ -1,3 +1,5 @@
+// Not Used
+
 const Panier = require('../models/panier.js');
 
 // Créer un nouveau panier

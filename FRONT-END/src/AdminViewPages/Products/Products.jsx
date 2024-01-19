@@ -1,12 +1,13 @@
-// Ce code est à optimiser pour mettre chaque modal dans fichier.jsx
+// Ce code est à optimiser pour mettre chaque modal dans un fichier.jsx
 
 import React from 'react'
-import '../Products/Products.css'
+import './Products.css'
 import useProducts from './useProducts'
 import { Modal } from 'react-bootstrap'
 import { Button } from 'react-bootstrap';
 import { useState } from 'react'
 import myPhoto from '../../Assests/images/photo carte étudiant.jpg'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -27,6 +28,12 @@ const Products = () => {
     const handleShowUp = () => !showUp && setShowUp(true);
 
     const [productUpdated, setProductUpdated] = useState({ nom: "", description: "", categorie: "658c66922b3a6f1c54058fbf", prix: "", stock: "", image: "" })
+
+    const navigate = useNavigate()
+    const location = useLocation();
+    const currentPathname = location.pathname;
+
+    const [filter, setFilter] = useState('')
 
     return (
         <div>
@@ -112,6 +119,7 @@ const Products = () => {
                 </Modal.Footer>
             </Modal>
 
+
             {/* modal for Update Product */}
             <Modal show={showUp} onHide={handleCloseUp}>
                 <Modal.Header closeButton>
@@ -152,13 +160,15 @@ const Products = () => {
 
 
 
+
+
             <div className="app-container">
                 <div className="sidebar">
                     <div className="sidebar-header">
                     </div>
                     <ul className="sidebar-list">
-                        <li className="sidebar-list-item">
-                            <a href="#">
+                        <li className={`sidebar-list-item ${currentPathname === '/AdminView/Users' ? "active" : ""}`}>
+                            <a style={{ cursor: "pointer" }} onClick={() => navigate('/AdminView/Users')}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={18}
@@ -177,8 +187,8 @@ const Products = () => {
                                 <span>Users</span>
                             </a>
                         </li>
-                        <li className="sidebar-list-item active">
-                            <a href="#">
+                        <li className={`sidebar-list-item ${currentPathname === '/AdminView/Products' ? "active" : ""}`}>
+                            <a style={{ cursor: "pointer" }} onClick={() => navigate('/AdminView/Products')}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={18}
@@ -198,7 +208,111 @@ const Products = () => {
                                 <span>Products</span>
                             </a>
                         </li>
-
+                        <li className={`sidebar-list-item ${currentPathname === '/AdminView/Commandes' ? "active" : ""}`}>
+                            <a style={{ cursor: "pointer" }} onClick={() => navigate('/AdminView/Commandes')}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={18}
+                                    height={18}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="feather feather-shopping-bag"
+                                >
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                    <line x1={3} y1={6} x2={21} y2={6} />
+                                    <path d="M16 10a4 4 0 0 1-8 0" />
+                                </svg>
+                                <span>Commandes</span>
+                            </a>
+                        </li>
+                        <li className={`sidebar-list-item ${currentPathname === '/AdminView/DetailsCommandes' ? "active" : ""}`}>
+                            <a style={{ cursor: "pointer" }} onClick={() => navigate('/AdminView/DetailsCommandes')}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={18}
+                                    height={18}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="feather feather-shopping-bag"
+                                >
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                    <line x1={3} y1={6} x2={21} y2={6} />
+                                    <path d="M16 10a4 4 0 0 1-8 0" />
+                                </svg>
+                                <span>Details Commande</span>
+                            </a>
+                        </li>
+                        <li className={`sidebar-list-item ${currentPathname === '/AdminView/Paniers' ? "active" : ""}`}>
+                            <a style={{ cursor: "pointer" }} onClick={() => navigate('/AdminView/Paniers')}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={18}
+                                    height={18}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="feather feather-shopping-bag"
+                                >
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                    <line x1={3} y1={6} x2={21} y2={6} />
+                                    <path d="M16 10a4 4 0 0 1-8 0" />
+                                </svg>
+                                <span>Paniers</span>
+                            </a>
+                        </li>
+                        <li className={`sidebar-list-item ${currentPathname === '/AdminView/Categories' ? "active" : ""}`}>
+                            <a style={{ cursor: "pointer" }} onClick={() => navigate('/AdminView/Categories')}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={18}
+                                    height={18}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="feather feather-shopping-bag"
+                                >
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                    <line x1={3} y1={6} x2={21} y2={6} />
+                                    <path d="M16 10a4 4 0 0 1-8 0" />
+                                </svg>
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li className={`sidebar-list-item ${currentPathname === '/AdminView/Comments' ? "active" : ""}`}>
+                            <a style={{ cursor: "pointer" }} onClick={() => navigate('/AdminView/Comments')}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={18}
+                                    height={18}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="feather feather-shopping-bag"
+                                >
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                    <line x1={3} y1={6} x2={21} y2={6} />
+                                    <path d="M16 10a4 4 0 0 1-8 0" />
+                                </svg>
+                                <span>Comments</span>
+                            </a>
+                        </li>
                     </ul>
                     <div className="account-info">
                         <div className="account-info-picture">
@@ -234,7 +348,7 @@ const Products = () => {
                         <button className="app-content-headerButton" onClick={handleShowAdd}>Add Product</button>
                     </div>
                     <div className="app-content-actions">
-                        <input className="search-bar" placeholder="Search..." type="text" />
+                        <input className="search-bar" placeholder="Search..." type="search" onChange={(e) => { setFilter(e.target.value) }} />
                         <div className="app-content-actions-wrapper">
                             <div className="filter-button-wrapper">
                                 <button className="action-button filter jsFilter">
@@ -356,7 +470,7 @@ const Products = () => {
                                 </button>
                             </div>
                         </div>
-                        {products.map((product) => (
+                        {products.filter(product => product.nom.toLowerCase().includes(filter.toLowerCase().trim())).map((product) => (
                             <div className="products-row" key={product._id}>
                                 <button className="cell-more-button">
                                     <svg

@@ -1,0 +1,159 @@
+.com body {
+    background-color: #f7f6f6
+}
+
+.com .card {
+
+    border: none;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    border-radius: 4px;
+}
+
+
+.com .dots {
+
+    height: 4px;
+    width: 4px;
+    margin-bottom: 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.com .badge {
+
+    padding: 7px;
+    padding-right: 9px;
+    padding-left: 16px;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.com .user-img {
+
+    margin-top: 4px;
+}
+
+.com .check-icon {
+
+    font-size: 17px;
+    color: #c3bfbf;
+    top: 1px;
+    position: relative;
+    margin-left: 3px;
+}
+
+.com .form-check-input {
+    margin-top: 6px;
+    margin-left: -24px !important;
+    cursor: pointer;
+}
+
+
+.com .form-check-input:focus {
+    box-shadow: none;
+}
+
+
+.com .icons i {
+
+    margin-left: 8px;
+}
+
+.com .reply {
+
+    margin-left: 12px;
+}
+
+.com .reply small {
+
+    color: #b7b4b4;
+
+}
+
+
+.com .reply small:hover {
+
+    color: green;
+    cursor: pointer;
+
+}
+
+/* Comments */
+
+
+.comments .card {
+
+    border: none;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    border-radius: 4px;
+}
+
+
+.comments .dots {
+
+    height: 4px;
+    width: 4px;
+    margin-bottom: 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.comments .badge {
+
+    padding: 7px;
+    padding-right: 9px;
+    padding-left: 16px;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.comments .user-img {
+
+    margin-top: 4px;
+}
+
+.comments .check-icon {
+
+    font-size: 17px;
+    color: #c3bfbf;
+    top: 1px;
+    position: relative;
+    margin-left: 3px;
+}
+
+.comments.form-check-input {
+    margin-top: 6px;
+    margin-left: -24px !important;
+    cursor: pointer;
+}
+
+
+.comments .form-check-input:focus {
+    box-shadow: none;
+}
+
+
+.comments .icons i {
+
+    margin-left: 8px;
+}
+
+.comments .reply {
+
+    margin-left: 12px;
+}
+
+.comments .reply small {
+
+    color: #b7b4b4;
+    margin-left: 15px;
+
+}
+
+
+.comments .reply small:hover {
+
+    color: green;
+    cursor: pointer;
+
+}

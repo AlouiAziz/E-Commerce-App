@@ -80,6 +80,24 @@ exports.getOneProduct = async (req, res) => {
     }
 }
 
+// filtrer produits par nom
+
+exports.getProductNom = async (req, res) => {
+    try {
+        const products = await Product.find({ nom: { $regex: req.body.nom, $options: 'i' }, isActive: true });
+        let data;
+        if (products.length > 0) {
+            data = products;
+        } else {
+            data = "No Data Found";
+        }
+        return res.status(200).json({ payload: data });
+    } catch (error) {
+        return res.status(500).json({ payload: "Error getting product" });
+    }
+};
+
+
 // Mise à jour des données d'un produit
 
 exports.updateProduct = async (req, res) => {

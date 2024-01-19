@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        const token = jwt.sign({ userId: user._id }, 'your_secrete_key'/*, { expiresIn: '1h' }*/);
+        const token = jwt.sign({ userId: user._id }, 'your_secrete_key', { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true, secure: true, maxAge: 3600000 }) // maxAge en milisecondes = 1h
         return res.status(201).json({
             payload: "Login Successfully",

@@ -20,7 +20,8 @@ let commentaireSchema = new mongoose.Schema({
         default: Date.now,
     },
     note: {
-        type: String,
+        type: Number,
+        default: 4,
         required: true,
     },
     isActive: {
