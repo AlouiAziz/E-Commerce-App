@@ -1,79 +1,79 @@
-.company .card{
-    border:none;
+.company .card {
+    border: none;
 
-    position:relative;
-    overflow:hidden;
-    border-radius:8px;
-    cursor:pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.company .card:before{
-    
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    width:4px;
-    height:100%;
-    background-color:#E1BEE7;
-    transform:scaleY(1);
-    transition:all 0.5s;
+.company .card:before {
+
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #E1BEE7;
+    transform: scaleY(1);
+    transition: all 0.5s;
     transform-origin: bottom
 }
 
-.company .card:after{
-    
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    width:4px;
-    height:100%;
-    background-color:#8E24AA;
-    transform:scaleY(0);
-    transition:all 0.5s;
+.company .card:after {
+
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #8E24AA;
+    transform: scaleY(0);
+    transition: all 0.5s;
     transform-origin: bottom
 }
 
-.company .card:hover::after{
-    transform:scaleY(1);
+.company .card:hover::after {
+    transform: scaleY(1);
 }
 
 
-.company .fonts{
-    font-size:11px;
+.company .fonts {
+    font-size: 11px;
 }
 
-.company .social-list{
-    display:flex;
-    list-style:none;
-    justify-content:center;
-    padding:0;
+.company .social-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
 }
 
-.company .social-list li{
-    padding:10px;
-    color:#8E24AA;
-    font-size:19px;
+.company .social-list li {
+    padding: 10px;
+    color: #8E24AA;
+    font-size: 19px;
 }
 
 
-.company .buttons button:nth-child(1){
-       border:1px solid #8E24AA !important;
-       color:#8E24AA;
-       height:40px;
+.company .buttons button:nth-child(1) {
+    border: 1px solid #8E24AA !important;
+    color: #8E24AA;
+    height: 40px;
 }
 
-.company .buttons button:nth-child(1):hover{
-       border:1px solid #8E24AA !important;
-       color:#fff;
-       height:40px;
-       background-color:#8E24AA;
+.company .buttons button:nth-child(1):hover {
+    border: 1px solid #8E24AA !important;
+    color: #fff;
+    height: 40px;
+    background-color: #8E24AA;
 }
 
-.company .buttons button:nth-child(2){
-       border:1px solid #8E24AA !important;
-       background-color:#8E24AA;
-       color:#fff;
-        height:40px;
+.company .buttons button:nth-child(2) {
+    border: 1px solid #8E24AA !important;
+    background-color: #8E24AA;
+    color: #fff;
+    height: 40px;
 }

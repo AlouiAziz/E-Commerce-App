@@ -38,8 +38,8 @@ const Commandes = () => {
   return (
     <div>
       <Navbar />
-      <div className='commandes' style={{marginBottom:50}}>
-        <h1 style={{marginTop:50}}>Mes Commandes</h1>
+      <div className='commandes' style={{ marginBottom: 50 }}>
+        <h1 style={{ marginTop: 50 }}>Mes Commandes</h1>
         <div className="container mt-5">
           <div className="d-flex justify-content-center row">
             <div className="col-md-10">
@@ -52,7 +52,7 @@ const Commandes = () => {
                         <th> NB Products</th>
                         <th>Status</th>
                         <th>Total</th>
-                        <th>Created</th>
+                        <th>Created On</th>
                         <th />
                       </tr>
                     </thead>

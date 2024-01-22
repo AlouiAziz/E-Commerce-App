@@ -118,7 +118,7 @@ const ProductsList = () => {
                         {currentProducts.map((product) => (
                             <div className="col" key={product._id} >
                                 <div className="card h-100 shadow-sm">
-                                    <img src={product.image} className="card-img-top" alt="..."  onClick={() => { const id = product._id; navigate(`/ProductsList/${id}`) }}/>
+                                    <img src={product.image} className="card-img-top" alt="..." onClick={() => { const id = product._id; navigate(`/ProductsList/${id}`) }} />
                                     <div className="label-top shadow-sm">{product.stock}</div>
                                     <div className="card-body">
                                         <div className="clearfix mb-3" onClick={() => { const id = product._id; navigate(`/ProductsList/${id}`) }}>

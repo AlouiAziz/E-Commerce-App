@@ -32,7 +32,7 @@ const Company = () => {
 
                                             En plus de notre gamme exceptionnelle de composants, nous proposons également une sélection complète d'accessoires, de périphériques et d'équipements connexes. Que ce soit des claviers ergonomiques, des souris de jeu avancées, des écrans haute résolution ou des solutions de stockage de pointe, nous avons tout ce qu'il vous faut pour compléter votre installation informatique.
 
-                                            La satisfaction de nos clients est notre priorité absolue. 
+                                            La satisfaction de nos clients est notre priorité absolue.
                                         </p>
                                     </div>
                                     <ul className="social-list">

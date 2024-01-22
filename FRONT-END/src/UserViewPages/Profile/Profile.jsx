@@ -74,7 +74,7 @@ const Profile = () => {
                 {/* modal for Update Product */}
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>UPDATE DETAILS</Modal.Title>
+                        <Modal.Title style={{ marginLeft: "100px" }}>UPDATE DETAILS</Modal.Title>
                     </Modal.Header>
                     <Modal.Body style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <div style={{ margin: "5px" }}>

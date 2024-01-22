@@ -26,7 +26,7 @@ const ProductDetails = () => {
 
         setProduct(responseP.data.payload);
         setComments(responseC.data.payload);
-        
+
       } catch (error) {
         console.error('Error fetching data:', error);
         if (error.response) {
@@ -46,7 +46,7 @@ const ProductDetails = () => {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom:100 }}>
+    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: 100 }}>
       {product ? (
         <div className='PD'>
           <div className="d-flex justify-content-center container mt-5">
@@ -94,7 +94,7 @@ const ProductDetails = () => {
           <div className="row  d-flex justify-content-center">
             <div className="col-md-8">
               <div className="headings d-flex justify-content-between align-items-center mb-3">
-                <h5>Unread comments({comments && Array.isArray(comments) && comments.length > 0 ? comments.length : "0" })</h5>
+                <h5>Unread comments({comments && Array.isArray(comments) && comments.length > 0 ? comments.length : "0"})</h5>
                 <div className="buttons">
                   <span className="badge bg-white d-flex flex-row align-items-center">
                     <span className="text-primary">Comments "ON"</span>
@@ -108,42 +108,42 @@ const ProductDetails = () => {
                     </div>
                   </span>
                 </div>
-              </div>{comments && Array.isArray(comments) && comments.length > 0 ?  comments.map((comment) => (
-                              <div className="card p-3" style={{width:'100%', marginTop:10}}>
-                              <div className="d-flex justify-content-between align-items-center">
-                                <div className="user d-flex flex-row align-items-center">
-                                  <img
-                                    src="https://i.imgur.com/hczKIze.jpg"
-                                    width={30}
-                                    className="user-img rounded-circle mr-2"
-                                  />
-                                  <span>
-                                    <small className="font-weight-bold text-primary">
-                                      {comment.user_id}
-                                    </small>{" "}
-                                    <small className="font-weight-bold">
-                                      {comment.commentaire}
-                                    </small>
-                                  </span>
-                                </div>
-                                <small>{comment.date}</small>
-                              </div>
-                              <div className="action d-flex justify-content-between mt-2 align-items-center">
-                                <div className="reply px-4">
-                                  <small>Remove</small>
-                                  <span className="dots" />
-                                  <small>Reply</small>
-                                  <span className="dots" />
-                                  <small>Translate</small>
-                                </div>
-                                <div className="icons align-items-center">
-                                  <i className="fa fa-star text-warning" />
-                                  <i className="fa fa-check-circle-o check-icon text-primary" />
-                                  <i className="fa fa-user-plus text-muted" />
-                                </div>
-                              </div>
-                            </div>
-              )):(<h1 style={{marginTop:50}}>No comments</h1>)}
+              </div>{comments && Array.isArray(comments) && comments.length > 0 ? comments.map((comment) => (
+                <div className="card p-3" style={{ width: '100%', marginTop: 10 }}>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="user d-flex flex-row align-items-center">
+                      <img
+                        src="https://i.imgur.com/hczKIze.jpg"
+                        width={30}
+                        className="user-img rounded-circle mr-2"
+                      />
+                      <span>
+                        <small className="font-weight-bold text-primary">
+                          {comment.user_id}
+                        </small>{" "}
+                        <small className="font-weight-bold">
+                          {comment.commentaire}
+                        </small>
+                      </span>
+                    </div>
+                    <small>{comment.date}</small>
+                  </div>
+                  <div className="action d-flex justify-content-between mt-2 align-items-center">
+                    <div className="reply px-4">
+                      <small>Remove</small>
+                      <span className="dots" />
+                      <small>Reply</small>
+                      <span className="dots" />
+                      <small>Translate</small>
+                    </div>
+                    <div className="icons align-items-center">
+                      <i className="fa fa-star text-warning" />
+                      <i className="fa fa-check-circle-o check-icon text-primary" />
+                      <i className="fa fa-user-plus text-muted" />
+                    </div>
+                  </div>
+                </div>
+              )) : (<h1 style={{ marginTop: 50 }}>No comments</h1>)}
             </div>
           </div>
         </div>

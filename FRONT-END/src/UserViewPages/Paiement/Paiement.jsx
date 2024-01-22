@@ -86,9 +86,9 @@ const Paiement = () => {
                             <div className="card-body border p-0">
                                 <p>
 
-                                        <span className=" btn btn-primary w-100 payment">PayPal</span>
-                                        <span className="fab fa-cc-paypal"></span>
-                                    
+                                    <span className=" btn btn-primary w-100 payment">PayPal</span>
+                                    <span className="fab fa-cc-paypal"></span>
+
                                 </p>
                                 <div className="collapse p-3 pt-0" id="collapseExample">
                                     <div className="row">
@@ -113,17 +113,17 @@ const Paiement = () => {
                                 </div>
                             </div>
                             <div className="card-body border p-0">
-                                <p style={{marginTop:10}}>
+                                <p style={{ marginTop: 10 }}>
 
-                                        <span className="btn btn-primary w-100 payment">Credit Card</span>
-                                        <span className="">
-                                            <span className="fab fa-cc-amex" />
-                                            <span className="fab fa-cc-mastercard" />
-                                            <span className="fab fa-cc-discover" />
-                                        </span>
-                                   
+                                    <span className="btn btn-primary w-100 payment">Credit Card</span>
+                                    <span className="">
+                                        <span className="fab fa-cc-amex" />
+                                        <span className="fab fa-cc-mastercard" />
+                                        <span className="fab fa-cc-discover" />
+                                    </span>
+
                                 </p>
-                                <div className="collapse show p-3 pt-0" id="collapseExample" style={{marginTop:30}}>
+                                <div className="collapse show p-3 pt-0" id="collapseExample" style={{ marginTop: 30 }}>
                                     <div className="row">
                                         <div className="col-lg-5 mb-lg-0 mb-3">
                                             <p className="h4 mb-0">Summary</p>

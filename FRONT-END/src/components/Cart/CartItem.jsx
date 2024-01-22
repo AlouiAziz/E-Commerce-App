@@ -3,7 +3,6 @@ import '../../UserViewPages/Cart/Cart.css'
 import { useDispatch, useSelector } from "react-redux"
 import { removeItem, updateQuantity } from '../../redux/cartSlice'
 import { Button } from 'react-bootstrap'
-import Modal from 'react-bootstrap/Modal';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'

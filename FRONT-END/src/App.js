@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { currentUser } from './redux/authSlice.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,11 +22,21 @@ import Company from './UserViewPages/Company/Company.jsx'
 
 function App() {
 
+  const [user, setUser] = useState(null)
+
+  const defaultUser = useSelector(state => state.auth.user)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (defaultUser) {
+      setUser(defaultUser);
+    }
+  }, [defaultUser]);
 
   return (
 
@@ -36,8 +46,6 @@ function App() {
         <Route path="/AdminView/Products" element={<Products />} />
         <Route path="/AdminView/Categories" element={<Products />} />
         <Route path="/AdminView/Commandes" element={<Products />} />
-        <Route path="/AdminView/DetailsCommandes" element={<Products />} />
-        <Route path="/AdminView/Paniers" element={<Products />} />
         <Route path="/AdminView/Comments" element={<Products />} />
         <Route path="/AdminView/Users" element={<Products />} />
         <Route path="/Register" element={<Register />} />
@@ -54,7 +62,7 @@ function App() {
           path="/Company"
           element={
             <PrivateRoute>
-              <Company/>
+              <Company />
             </PrivateRoute>
           }
         />

@@ -7,7 +7,7 @@ const cartSlice = createSlice({
         addToCart(state, action) {
             const check = state.list.findIndex(product => product._id === action.payload._id)
             if (check !== -1) {
-                state.list[check].quantity += action.payload.quantity 
+                state.list[check].quantity += action.payload.quantity
             } else {
                 state.list.push(action.payload)
             }
@@ -17,7 +17,7 @@ const cartSlice = createSlice({
         updateQuantity(state, action) {
             const check = state.list.findIndex(product => product._id === action.payload._id)
             if (check !== -1) {
-                state.list[check].quantity = action.payload.quantity 
+                state.list[check].quantity = action.payload.quantity
             }
             state.total = state.list.reduce((sum, product) => sum + +product?.prix * product?.quantity, 0)
         },

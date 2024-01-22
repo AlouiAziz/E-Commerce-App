@@ -116,9 +116,9 @@
     border-radius: 35px;
     font-size: 24px;
     line-height: 1.33;
-}
+  }
 
-.btn-circle {
+  .btn-circle {
     width: 30px;
     height: 30px;
     padding: 6px 0px;
@@ -126,7 +126,7 @@
     text-align: center;
     font-size: 12px;
     line-height: 1.42857;
-}
+  }
 
 
 }

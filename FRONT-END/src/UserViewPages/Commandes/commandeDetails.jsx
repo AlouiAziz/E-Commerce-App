@@ -2,7 +2,7 @@ import React from 'react'
 
 const commandeDetails = ({ commande }) => {
     return (
-        <div  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{ margin: "5px" }}>
                 <h6>Commande ID : {commande._id}</h6>
             </div>
